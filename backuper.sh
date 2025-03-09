@@ -27,7 +27,12 @@ done
 echo "\n📦 Gitga yuklanmoqda..."
 cd "$backup_dir" || exit
 
-git add .
-gita commit --push --use-sticker
-
-echo "\n🚀 Gitga muvaffaqiyatli yuklandi!"
+# O'zgarishlar borligini tekshirish
+if [[ -n $(git status --porcelain) ]]; then
+  git add .
+  git commit -m "🔄 Avtomatik zaxira: $(date '+%Y-%m-%d %H:%M:%S')"
+  git push
+  echo "\n🚀 Gitga muvaffaqiyatli yuklandi!"
+else
+  echo "\n✅ Hech qanday o'zgarish yo'q, gitga yuklanmadi."
+fi
