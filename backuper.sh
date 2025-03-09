@@ -30,8 +30,7 @@ cd "$backup_dir" || exit
 # O'zgarishlar borligini tekshirish
 if [[ -n $(git status --porcelain) ]]; then
   git add .
-  git commit -m "🔄 Avtomatik zaxira: $(date '+%Y-%m-%d %H:%M:%S')"
-  git push
+  gita commit --push --use-sticker
   echo "\n🚀 Gitga muvaffaqiyatli yuklandi!"
 else
   echo "\n✅ Hech qanday o'zgarish yo'q, gitga yuklanmadi."
