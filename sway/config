@@ -1,0 +1,41 @@
+
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+# exec sleep 1; swww init; sleep 1; while true; do swww img "$(find /home/kumo/Wallpapers -type f | shuf -n 1)" --transition-fps 30 --transition-type=random --transition-bezier=0,0.84,1,1; sleep 600; done
+
+# Run swaay random backgruond
+exec_always swww-daemon
+exec_always /home/kumo/.scripts/wallpaper_changer.sh
+
+# styles - set the folder for your theme definition file
+set $theme /usr/share/sway/themes/matcha-green
+
+# theme variables
+include $theme/theme.conf
+
+# user theme variable can override the global theme
+include $HOME/.config/sway/definitions.d/theme.conf
+
+# global variables
+include /etc/sway/definitions
+
+# user variables can override global definitions
+include $HOME/.config/sway/definitions.d/*.conf
+
+include /etc/sway/inputs/*
+
+# enable modes
+include /etc/sway/modes/*
+
+# only enable this if every app you use is compatible with wayland
+# xwayland disable
+
+# include additional configs e.g. to autostart applications
+include /etc/sway/config.d/*
+
+# user config
+include $HOME/.config/sway/config.d/*.conf
